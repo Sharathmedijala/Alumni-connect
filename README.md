@@ -21,13 +21,7 @@
 
 ---
 
-## Demo
 
-> Add screenshots or a short GIF here showing the main flows: onboarding/Google Sign-In, Communities list, Community feed and posting, Opportunities list, Events detail.
-
-(Place images in `/assets/screenshots/` and reference them in this README.)
-
----
 
 ## Key features
 

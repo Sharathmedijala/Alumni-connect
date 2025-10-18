@@ -167,10 +167,12 @@ Please follow the existing code style and include screenshots/GIFs for UI change
 
 ## Credits
 
-Built by Sharath Medijala — contributions welcome.
+Built by :
+Sharath Medijala
+M S Suhel
+M Vishnuvardhan
+
 
 ---
 
-## License
 
-This project is licensed under the MIT License. See `LICENSE` for details.

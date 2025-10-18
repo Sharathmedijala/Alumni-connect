@@ -1,141 +1,128 @@
-Absolutely ✅ — here’s the **entire README** in **one complete Markdown code block** — you can copy-paste this directly into your `README.md` file in your GitHub project root:
-
----
-
-```markdown
 # Alumni-Connect
 
-> A Flutter-based alumni networking app connecting graduates through communities, posts, opportunities, and events. Built with Firebase (Auth, Firestore, Storage) and Google Sign-In for fast onboarding.
+> A Flutter-based alumni networking app connecting graduates through communities, posts, opportunities and events. Built with Firebase (Auth, Firestore, Storage) and Google Sign-In for fast onboarding.
 
 ---
 
-## 📘 Table of Contents
+## Table of contents
 
-- [Demo](#demo)
-- [Key Features](#key-features)
-- [Tech Stack](#tech-stack)
-- [Architecture & Folders](#architecture--folders)
-- [Setup & Local Development](#setup--local-development)
-- [Firebase Configuration](#firebase-configuration)
-- [Running the App](#running-the-app)
-- [Testing](#testing)
-- [How to Contribute](#how-to-contribute)
-- [Roadmap](#roadmap)
-- [Troubleshooting](#troubleshooting)
-- [License](#license)
+* [Demo](#demo)
+* [Key features](#key-features)
+* [Tech stack](#tech-stack)
+* [Architecture & folders](#architecture--folders)
+* [Setup & local development](#setup--local-development)
+* [Firebase configuration](#firebase-configuration)
+* [Running the app](#running-the-app)
+* [Testing](#testing)
+* [How to contribute](#how-to-contribute)
+* [Roadmap](#roadmap)
+* [Troubleshooting](#troubleshooting)
+* [License](#license)
 
 ---
 
-## 🎥 Demo
+## Demo
 
 > Add screenshots or a short GIF here showing the main flows: onboarding/Google Sign-In, Communities list, Community feed and posting, Opportunities list, Events detail.
 
-(Place images in `/assets/screenshots/` and reference them here.)
+(Place images in `/assets/screenshots/` and reference them in this README.)
 
 ---
 
-## 🚀 Key Features
+## Key features
 
-- 🔑 Google Sign-In (Firebase Authentication)
-- 👥 Communities: view joined and explore others (horizontal + grid/list views)
-- 📰 Community Feed: posts filtered by `communityId` with content, author, and timestamp
-- ✍️ Create / Edit Posts (text, optional media)
-- 🎯 Opportunities & Events: list and detail screens
-- 👤 Profile screen with user info and joined communities
-- 🔄 Real-time updates via Cloud Firestore
-- 🧭 Bottom navigation (Community / Mentoring / Profile)
-
----
-
-## 🛠️ Tech Stack
-
-- **Frontend:** Flutter (Dart)
-- **Backend:** Firebase (Authentication, Firestore, Storage)
-- **Auth:** Google Sign-In
-- **Platform:** Android (Kotlin) & iOS
+* Google Sign-In (Firebase Authentication)
+* Communities: view joined communities and explore others (horizontal and grid/list views)
+* Community feed: posts filtered by `communityId` with content, author, and timestamp
+* Create / Edit posts (text, optional media upload)
+* Opportunities & Events: list and detail screens
+* Profile screen with basic user info and joined communities
+* Bottom navigation (Community / Mentoring / Profile)
+* Real-time data using Cloud Firestore
 
 ---
 
-## 🧩 Architecture & Folders
+## Tech stack
+
+* Flutter (Dart)
+* Firebase: Authentication, Cloud Firestore, Storage
+* Google Sign-In
+* Platform: Android (Kotlin) and iOS
+
+---
+
+## Architecture & folders (high-level)
 
 ```
-
 /lib
-/models        # Data models (User, Community, Post, Event, Opportunity)
-/services      # Firebase service wrappers (auth_service, firestore_service)
-/pages         # UI pages (CommunitiesPage, CommunityFeedPage, ProfilePage...)
-/widgets       # Reusable widgets (CommunityTile, PostCard...)
-/utils         # Helpers (date formatting, validators)
+  /models        # Data models (User, Community, Post, Event, Opportunity)
+  /services      # Firebase service wrappers (auth_service, firestore_service)
+  /pages         # UI pages (CommunitiesPage, CommunityFeedPage, ProfilePage...)
+  /widgets       # Reusable widgets (CommunityTile, PostCard...)
+  /utils         # Helpers (date formatting, validators)
 /assets
-/images
-/screenshots
+  /images
+  /screenshots
 /test            # Unit / widget tests (if any)
+```
 
-````
-
-> The project currently uses **StatefulWidgets** (or Provider / Riverpod if implemented) for state management.
+> The codebase uses provider/riverpod/get_it (pick whichever you used) or plain StatefulWidgets for state management. If you use a specific pattern, replace this line with the pattern name and a short note.
 
 ---
 
-## ⚙️ Setup & Local Development
+## Setup & local development
 
-### 1. Clone the Repository
+1. **Clone the repo**
 
 ```bash
 git clone https://github.com/Sharathmedijala/Alumni-connect.git
 cd Alumni-connect
-````
+```
 
-### 2. Install Dependencies
+2. **Install Flutter and dependencies**
 
-Ensure Flutter SDK is installed and available in PATH.
-Minimum Flutter version → check `pubspec.yaml`.
+* Ensure Flutter SDK is installed and `flutter` is on your PATH. Minimum stable Flutter version: check your project's `pubspec.yaml` `environment:` field.
 
 ```bash
 flutter pub get
 ```
 
-### 3. Setup Platforms
+3. **Platform tooling**
 
-* **Android:** Use Android Studio → setup SDK + emulator/device
-* **iOS:** Requires Xcode (macOS)
-
----
-
-## 🔥 Firebase Configuration
-
-This project requires a Firebase setup.
-
-1. Go to [Firebase Console](https://console.firebase.google.com)
-2. Create a new Firebase project
-3. Add Android/iOS apps
-4. Download config files:
-
-   * `google-services.json` → `android/app/`
-   * `GoogleService-Info.plist` → `ios/Runner/`
-5. Enable **Google Sign-In** under **Authentication → Sign-in method**
-6. Create Firestore collections:
-
-   * `users`
-   * `communities`
-   * `posts`
-   * `events`
-   * `opportunities`
-7. (Optional) Enable Firebase Storage for image uploads
-
-> ⚠️ Never commit config files or API keys publicly.
+* Android: install Android Studio, Android SDK, and configure an emulator or connect a device.
+* iOS: Xcode (macOS required).
 
 ---
 
-## ▶️ Running the App
+## Firebase configuration
 
-To run the app on an emulator or device:
+This project requires a Firebase project. Follow these steps:
+
+1. Create a Firebase project at [https://console.firebase.google.com](https://console.firebase.google.com)
+2. Add Android and/or iOS apps to the project.
+3. Download `google-services.json` (Android) and `GoogleService-Info.plist` (iOS) and place them in the platform-specific folders:
+
+   * Android: `android/app/google-services.json`
+   * iOS: `ios/Runner/GoogleService-Info.plist`
+4. Enable **Authentication → Sign-in method → Google**.
+5. Create Firestore database (start in test mode for development) and configure collections: `users`, `communities`, `posts`, `events`, `opportunities`.
+6. (Optional) Enable Firebase Storage for media uploads.
+
+**Environment / config file**
+
+If the project uses a `.env` or `lib/config.dart`, populate it with your Firebase project values. Do NOT commit API keys or service files to a public repository.
+
+---
+
+## Running the app
+
+Run on Android emulator or connected device:
 
 ```bash
 flutter run
 ```
 
-To build a release APK:
+Build release APK for Android:
 
 ```bash
 flutter build apk --release
@@ -143,69 +130,53 @@ flutter build apk --release
 
 ---
 
-## 🧪 Testing
+## Testing
 
-If tests exist:
+If tests exist run:
 
 ```bash
 flutter test
 ```
 
-Add widget and unit tests for key UI flows and Firebase service logic where possible.
+Add widget and unit tests for key UI flows and service classes where possible.
 
 ---
 
-## 🤝 How to Contribute
+## How to contribute
 
-1. Fork this repository
-2. Create your branch:
+1. Fork the repository
+2. Create a branch: `git checkout -b feat/your-feature`
+3. Make changes and add tests
+4. Commit, push and open a Pull Request with a clear description of what you changed
 
-   ```bash
-   git checkout -b feat/your-feature
-   ```
-3. Make your changes
-4. Commit and push
-5. Open a Pull Request (PR) describing what you added or changed
-
-Please include screenshots for UI updates when possible.
+Please follow the existing code style and include screenshots/GIFs for UI changes.
 
 ---
 
-## 🗺️ Roadmap
+## Roadmap (suggested)
 
-* 🔔 Notifications for new posts
-* 🔍 Search across communities and opportunities
-* 💼 Richer profiles (resume upload, skills, graduation year)
-* 🧑‍💻 Admin panel for moderation
-* 🌐 PWA (Progressive Web App) support
-
----
-
-## 🧯 Troubleshooting
-
-| Issue                        | Possible Fix                                                             |
-| ---------------------------- | ------------------------------------------------------------------------ |
-| Google Sign-In not working   | Ensure SHA-1 is added to Firebase project settings                       |
-| Firestore permissions denied | Update Firestore rules or use test mode temporarily                      |
-| Missing platform files       | Check placement of `google-services.json` and `GoogleService-Info.plist` |
+* Notifications for new posts in joined communities
+* Search across communities and opportunities
+* Richer profiles (resume upload, skills, graduation year)
+* Admin panel for community moderation
+* Progressive Web App (PWA) support
 
 ---
 
-## 👨‍💻 Credits
+## Troubleshooting
 
-Developed by **Sharath Medijala**
-Contributions and improvements are welcome 🙌
-
----
-
-## 🧾 License
-
-This project is licensed under the **MIT License**.
-See the [LICENSE](./LICENSE) file for details.
-
-```
+* **Google Sign-In not working**: double-check `SHA-1` (Android) added in Firebase console and that the OAuth client matches the package name.
+* **Firestore permission errors**: verify Firestore rules or temporarily open rules while developing (remember to tighten before production).
+* **Missing platform files**: confirm `google-services.json` / `GoogleService-Info.plist` are in the expected paths.
 
 ---
 
-Would you like me to add **badges (like Flutter version, Firebase, License, etc.)** at the top for a more professional GitHub appearance?
-```
+## Credits
+
+Built by Sharath Medijala — contributions welcome.
+
+---
+
+## License
+
+This project is licensed under the MIT License. See `LICENSE` for details.
